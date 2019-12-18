@@ -115,7 +115,7 @@ You will be able to access the api locally in the `8080` port.
 #### The API
 
 - `/api/v1/records`: Returns a list containing all the records.
-- `/api/v1/records/{record_id}`: Returns a list with a single record that match the `record_id` path parameter.
+- `/api/v1/records/{id}`: Returns a list with a single record that match the `id` path parameter.
 
 Examples:
 
@@ -156,7 +156,7 @@ curl localhost:8080/api/v1/records | jq
 This is an example output, to get the full output, test it locally.
 
 ```bash
-curl localhost:8080/api/v1/record/5df983d2970c93051e784eeb | jq
+curl localhost:8080/api/v1/records/5df983d2970c93051e784eeb | jq
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100   241  100   241    0     0    317      0 --:--:-- --:--:-- --:--:--   317
@@ -185,7 +185,7 @@ If you have any doubt, don't hesitate to [open an issue](https://github.com/vigi
 As you can see, the API returns a list in the two exposed endpoints:
 
 - `/api/v1/records`: Returns a list containing all the records.
-- `/api/v1/records/{record_id}`: Returns a list with a single record that match the `record_id` path parameter.
+- `/api/v1/records/{id}`: Returns a list with a single record that match the `id` path parameter.
 
 We want to fix the second endpoint. Return a json object instead of a json array if there is a match or a http 204 status code if no match found.
 
