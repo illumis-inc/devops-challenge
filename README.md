@@ -198,7 +198,7 @@ Choose one, travis-ci, gitlab-ci, circleci or whatever you prefer. Give us a suc
 
 ### Challenge 3. Dockerize the APP
 
-What about containers? As this moment *(2018)*, containers are a standard in order to deploy applications *(cloud or in on-premise systems)*. So the challenge is to build the smaller image you can. Write a good Dockerfile :)
+What about containers? As this moment *(2020)*, containers are a standard in order to deploy applications *(cloud or in on-premise systems)*. So the challenge is to build the smaller image you can. Write a good Dockerfile :)
 
 ### Challenge 4. Dockerize the database
 
