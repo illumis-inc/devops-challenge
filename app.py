@@ -20,7 +20,11 @@ def records():
 
 @app.route('/api/v1/records/<id>')
 def record(id):
-    return jsonify(find_records(mongo, id))
+    response = find_records(mongo, id)
+    if response:
+        return jsonify(response[0])
+    else:
+        return {}, 204
 
 
 if __name__ == '__main__':
