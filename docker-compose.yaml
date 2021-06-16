@@ -1,0 +1,25 @@
+---
+version: "3"
+
+services:
+  challenge:
+    image: devops-challenge
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment: 
+      - MONGO_URI=mongodb://mongo:27017/db
+    ports:
+      - 80:80
+  mongo:
+    image: mongo:4.0.25
+    environment: 
+      - MONGO_INITDB_DATABASE=db
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASS}
+    volumes:
+      - ./data:/mongo-data
+      - ./docker/mongoimport.sh:/docker-entrypoint-initdb.d/mongoimport.sh:ro
+    ports:
+      - 27017:27017
+  
