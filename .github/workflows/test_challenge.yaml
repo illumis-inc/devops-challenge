@@ -1,20 +1,29 @@
 name: Devops Challenge Test
 
-on: [push]
+on:
+  - push
+  - pull_request
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.7]
+        python-version: [2.7, 3.5.10, 3.6.13]
 
     steps:
       - uses: actions/checkout@v2.3.4
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: pip install -r requirements_dev.txt
       - name: Install tox
         run: pip install tox
+      - name: Install typing module
+        run: pip install typing
+        if: ${{ matrix.python-version == '3.4.10' }}
       - name: Run tox
-        run: tox
+        run: tox -e py
