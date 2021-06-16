@@ -12,8 +12,8 @@ jobs:
       contents: read
 
     steps:
-      # - name: Checkout repo
-      #   uses: actions/checkout@v2.3.4
+      - name: Checkout repo
+        uses: actions/checkout@v2.3.4
       - name: Get the tag name
         run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: Login to Github registry
